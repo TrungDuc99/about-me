@@ -2,28 +2,13 @@ import ImageFallback from "@/layouts/components/ImageFallback";
 import Image from "next/image";
 import Link from "next/link";
 import config from "../config/config.json";
+import { useEffect } from "react";
+import { getServerSideProps } from "@/api/axios";
 export default function Home() {
   const { name, image, designation, bio } = config.profile;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Link href="/dashboard">Dashboard</Link>;
-      <div className="section">
-        <div className="container">
-          <div className="row">
-            <div className="mx-auto text-center lg:col-8">
-              <ImageFallback
-                className="mx-auto rounded-full"
-                src={image}
-                width={220}
-                height={220}
-                priority={true}
-                alt={name}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -130,6 +115,7 @@ export default function Home() {
     </main>
   );
 }
+
 // my-app/
 // | - .gitignore
 // | - README.md
