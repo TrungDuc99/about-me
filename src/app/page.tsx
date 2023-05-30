@@ -1,12 +1,30 @@
-import ImageFallback from "@/layouts/components/ImageFallback";
 import Image from "next/image";
 import Link from "next/link";
 import config from "../config/config.json";
 import { useEffect } from "react";
 import { getServerSideProps } from "@/api/axios";
+import { useRouter } from "next/router";
 export default function Home() {
   const { name, image, designation, bio } = config.profile;
+  function ServerButton({ onClick, children }: any) {
+    function handleClick(e: any) {
+      e.preventDefault();
+      onClick();
+    }
 
+    return (
+      <button
+        style={{ backgroundColor: "red" }}
+        onClick={handleClick}
+        children={children}
+      />
+    );
+  }
+  function handleButtonClick() {
+    console.log("asdsadsd");
+
+    // Xử lý sự kiện khi người dùng click vào button
+  }
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -14,6 +32,7 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
         </p>
+
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
