@@ -1,8 +1,9 @@
+import { API_URL } from "@/utils/urls";
 import axios, { AxiosResponse } from "axios";
 
 import queryString from "query-string";
 const axiosClient = axios.create({
-  baseURL: "http://localhost:9888/api",
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },

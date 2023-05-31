@@ -6,24 +6,18 @@ import React, { SyntheticEvent, useState } from "react";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const router = useRouter();
-  console.log("====================================");
-  console.log(email, password);
-  console.log("====================================");
+
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const res = await auThenticateApi.login({
-      email,
-      password,
+      email: "ngocdien@gmail.com",
+      password: "123456aA@",
     });
-    console.log("====================================");
+    console.log("==================asdas===qeqwe===============");
     console.log(res);
     console.log("====================================");
     if (res.success) {
-      localStorage.setItem("jwt_token_key", res.data.token);
-      console.log("====================================");
-      console.log(res.data);
-      console.log("====================================");
+      localStorage.setItem("authenticationToken", res.data.token);
     }
   };
 
@@ -39,6 +33,7 @@ const Login = () => {
               style={{ color: "red" }}
               className="form-control"
               placeholder="Email"
+              defaultValue="ngocdien@gmail.com"
               required
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -48,6 +43,7 @@ const Login = () => {
               style={{ color: "red" }}
               type="password"
               className="form-control"
+              defaultValue="123456aA@"
               placeholder="Mật khẩu"
               required
               onChange={(e) => setPassword(e.target.value)}
@@ -57,9 +53,8 @@ const Login = () => {
           <button
             style={{ width: "100%", backgroundColor: "red" }}
             className="btn btn-lg"
-            onClick={() => {
-              console.log("onClick");
-            }}
+            name="submit"
+            onClick={submit}
           >
             Đăng nhập
           </button>
